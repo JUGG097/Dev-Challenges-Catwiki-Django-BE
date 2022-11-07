@@ -148,7 +148,7 @@ class CatwikiTests(APITestCase):
             status=400,
         )
 
-        url = reverse("cat_details", args=[cat_id])
+        url = reverse("cat_photos", args=[cat_id])
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_503_SERVICE_UNAVAILABLE)
 

@@ -30,7 +30,7 @@ jobs:
         run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - name: Build the Docker Image
-        run: docker build . --file Dockerfile --tag catwiki-django-be
+        run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USER }}/catwiki-django-be
       - name: Docker push
         run: docker push ${{ secrets.DOCKER_USER }}/catwiki-django-be:latest
       
