@@ -152,7 +152,6 @@ class CatwikiTests(APITestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_503_SERVICE_UNAVAILABLE)
 
-
     @responses.activate
     def test_get_breedlist(self):
         """
@@ -177,7 +176,7 @@ class CatwikiTests(APITestCase):
         )
 
     @responses.activate
-    def test_get_photos_503(self):
+    def test_get_breedlist_503(self):
         """
         Tests get_breedlist failure
         """
