@@ -44,7 +44,7 @@ jobs:
     needs: [build_publish_docker_image]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Deploy Node Express TypeScript BE
+      - name: Deploy Django BE
         uses: appleboy/ssh-action@v0.1.2
         with:
           host: ${{secrets.SSH_HOST}} # IP address of the server you wish to ssh into
@@ -53,6 +53,4 @@ jobs:
           
           script: |
             docker pull ${{ secrets.DOCKER_USER }}/catwiki-django-be:latest
-            docker stop catwiki-django-be
-            docker rm catwiki-django-be
             docker run --name catwiki-django-be -it catwiki-django-be:latest -p 8020:8000
