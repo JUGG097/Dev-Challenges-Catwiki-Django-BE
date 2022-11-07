@@ -9,9 +9,9 @@ from .views import (
 
 
 urlpatterns = [
-    path("check", health_check),
-    path("topTen", get_top_ten),
-    path("details/<str:cat_id>", get_cat_details),
-    path("photos/<str:cat_id>", get_cat_photos),
-    path("breedlist", get_cat_breeds),
+    path("check", health_check, name="health_check"),
+    path("topTen", get_top_ten, name="topTen"),
+    path("details/<str:cat_id>", get_cat_details, name="cat_details"),
+    path("photos/<str:cat_id>", get_cat_photos, name="cat_photos"),
+    path("breedlist", get_cat_breeds, name="cat_breeds"),
 ]
