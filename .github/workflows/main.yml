@@ -17,7 +17,7 @@ jobs:
       - run: pip install flake8
       - run: pip install -r requirements.txt
       - run: python -m manage test
-      - run: flake8 api/ # Runs flake 8 test to check code style
+      - run: flake8 api/ --max-line-length=127 # Runs flake 8 test to check code style
 
   build_publish_docker_image:
     runs-on: ubuntu-latest
