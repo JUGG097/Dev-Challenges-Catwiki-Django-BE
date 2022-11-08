@@ -57,6 +57,8 @@ jobs:
 
             docker stop catwiki-django-be
 
+            docker rm -f catwiki-django-be
+
             docker run -d -p 8020:8020 --name catwiki-django-be ${{ secrets.DOCKER_USER }}/catwiki-django-be:latest
 
             # if [ ! "$(docker ps -q -f name=^catwiki-django-be$)" ]; then
