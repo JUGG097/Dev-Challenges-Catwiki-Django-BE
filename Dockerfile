@@ -8,7 +8,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 RUN mkdir -p /opt/app
 RUN mkdir -p /opt/app/pip_cache
 COPY requirements.txt config/start-server.sh manage.py /opt/app/
-# RUN chmod u+x /opt/app/start-server.sh 
+RUN chmod +x /opt/app/start-server.sh 
 # COPY .pip_cache /opt/app/pip_cache/
 COPY api /opt/app/api/
 COPY base /opt/app/base/
