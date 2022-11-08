@@ -53,4 +53,12 @@ jobs:
           
           script: |
             docker pull ${{ secrets.DOCKER_USER }}/catwiki-django-be:latest
-            docker run -d -p 8020:8020 --name catwiki-django-be --rm ${{ secrets.DOCKER_USER }}/catwiki-django-be:latest
+
+            if [ ! "$(docker ps -q -f name=^catwiki-django-be$)" ]; then
+            if [ "$(docker ps -aq -f status=exited -f name=^catwiki-django-be$)" ]; then
+                # cleanup
+                docker rm catwiki-django-be
+            fi
+            # run your container
+            docker run -d -p 8020:8020 --name catwiki-django-be ${{ secrets.DOCKER_USER }}/catwiki-django-be:latest
+            fi
