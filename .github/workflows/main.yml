@@ -53,4 +53,4 @@ jobs:
           
           script: |
             docker pull ${{ secrets.DOCKER_USER }}/catwiki-django-be:latest
-            docker run  -p 8020:8020 --name catwiki-django-be --rm -i ${{ secrets.DOCKER_USER }}/catwiki-django-be:latest
+            docker run -d -p 8020:8020 --name catwiki-django-be --rm ${{ secrets.DOCKER_USER }}/catwiki-django-be:latest
