@@ -18,7 +18,9 @@ def get_top_ten(request):
     json_payload = catapi_first_ten.json()
 
     return Response(
-        {"success": True, "data": [extract_cat_details(i) for i in json_payload]}, 200
+        {"success": True, "data": [extract_cat_details(i) for i in json_payload]}, 200, headers={
+            "cache-control": "max-age=86400"
+        }
     )
 
 
@@ -38,7 +40,9 @@ def get_cat_details(request, cat_id):
     details_json_payload["image"] = images_json_payload[0]
 
     return Response(
-        {"success": True, "data": extract_cat_details(details_json_payload)}, 200
+        {"success": True, "data": extract_cat_details(details_json_payload)}, 200, headers={
+            "cache-control": "max-age=86400"
+        }
     )
 
 
@@ -50,7 +54,9 @@ def get_cat_photos(request, cat_id):
 
     images_json_payload = catapi_breed_images.json()
 
-    return Response({"success": True, "data": images_json_payload}, 200)
+    return Response({"success": True, "data": images_json_payload}, 200, headers={
+            "cache-control": "max-age=86400"
+        })
 
 
 @api_view(["GET"])
@@ -62,5 +68,7 @@ def get_cat_breeds(request):
     json_payload = catapi_breeds.json()
 
     return Response(
-        {"success": True, "data": [extract_breed_details(i) for i in json_payload]}, 200
+        {"success": True, "data": [extract_breed_details(i) for i in json_payload]}, 200, headers={
+            "cache-control": "max-age=86400"
+        }
     )
